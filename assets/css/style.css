@@ -1,3 +1,7 @@
+html {
+    background-color: #1f232c
+}
+
 #search-section{
     max-height: 200px;
 }
@@ -8,11 +12,25 @@
     align-self: center;
 }
 
+body{
+    background-color: #1f232c;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+}
 #search-button{
     background:  cornflowerblue;
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 0;
+}
+#search-button:hover{
+    opacity: .70
 }
 #cineImage{
     padding: 0;
