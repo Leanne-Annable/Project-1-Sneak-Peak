@@ -1,7 +1,33 @@
-html {
-    background-color: #1f232c
+/* main body */
+body{
+    background-color: #1f232c;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
 }
 
+
+
+/* nav bar */
+header{
+    background: url(../images/projector.jpg);
+    width: 100%;
+    background-size: cover;
+    height: 130px;
+    padding: 0;
+    display: flex !important;
+}
+.logo{
+    height: 100px;
+    margin-left: 30%;
+    margin-right: auto;
+}
+
+
+
+/* search section - aside */
 #search-section{
     max-height: 200px;
 }
@@ -10,18 +36,6 @@ html {
 }
 #search-form{
     align-self: center;
-}
-
-body{
-    background-color: #1f232c;
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
 }
 #search-button{
     background:  cornflowerblue;
@@ -32,10 +46,18 @@ body{
 #search-button:hover{
     opacity: .70
 }
-#cineImage{
+
+
+/* info section */
+#infoText{
+
+}
+
+
+/* #cineImage{
     padding: 0;
 }
 #cineImage img{
     max-height: 200px;
     width: 100%;
-}
+} */

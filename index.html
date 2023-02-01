@@ -15,13 +15,9 @@
 
 <body>
     <!-- main heading -->
-    <header class="container-fluid text-center text-white  p-2 page-header">
-        <!-- Image and text -->
-<nav class="navbar navbar-light bg-grey">
-    <a class="navbar-brand" href="#">
-      <img src="./assets/images/logo.png/logo-no-background.png" height="75">
-    </a>
-  </nav>
+    <!-- Image and text -->
+    <header class="navbar navbar-light bg-grey">
+            <img class="logo" src="./assets/images/logo.png/logo-no-background.png" height="75">
     </header>
 
     <div class="container-fluid">
@@ -36,21 +32,31 @@
                         <div class="input-group">
                             <!-- text box section -->
                             <input class="form-input weather-search col-md-12" type="text" id="search-input"
-                                placeholder="Enter movie here"  />
+                                placeholder="Enter movie here" />
                             <div class="input-group-append col-md-12">
                                 <!-- search button -->
                                 <button type="submit" class="btn search-button text-white col-md-12" id="search-button"
                                     aria-label="submit search">
                                     Search
-                                </button>
+                                </button>                                
                             </div>
-                        </div>
-                    </div>
+                        </div>                        
+                    </div>                    
                 </form>
             </aside>
             <div id="cineImage" class="col-md-9">
-                <img src="./assets/images/projector.jpg" class="d-block w-100" alt="A cinema screen and seats">
+                <p id="infoText"> search to the left click on image below </p>
             </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="recentMovies">
+            <p style="text-align: center;">
+                * This is where the ajax call will produce 8 cards using a for loop * <br>
+                * We will need to add an api call for the movie poster, to get the initial image and give it a class so
+                we can click on it *<br>
+                * When clicked, that movie information should open up and a video be linked *
+            </p>
         </div>
     </div>
 
