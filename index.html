@@ -19,9 +19,37 @@
         <h1>📽️ Sneak Peak 📽️</h1>
     </header>
 
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-md-3 pb-3">
+                <!-- sub-heading -->
+                <h2 id="form-heading" class="mt-1 h3 form-label">
+                    Search for a movie:
+                </h2>
+                <form id="search-form" class="form">
+                    <div class="form-inline form-group">
+                        <div class="input-group">
+                            <!-- text box section -->
+                            <input class="form-input weather-search col-md-12" type="text" id="search-input" placeholder="Enter movie here"
+                                aria-labelledby="form-heading" aria-controls="today forecast" />
+                            <div class="input-group-append col-md-12">
+                                <!-- search button -->
+                                <button type="submit" class="btn search-button text-white col-md-12" id="search-button" aria-label="submit search">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- where the list of cities will be stored -->
+                <div class="list-group" id="history"></div>
+            </aside>
+        </div>
+    </div>
 
 
-        <!-- Moment.js -->
+
+    <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
