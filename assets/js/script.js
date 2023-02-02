@@ -23,6 +23,45 @@
 /* create an API to YouTube to get the movie trailer 
     (This again will need to be linked to either the inputted text or clicked image)
 
-    in the call code we will need to add "movie trailer" so the youtube search looks for that specifically
-    
+    in the call code we will need to add "movie trailer" so the youtube search looks for that specifically  
 */
+
+// variables
+
+var searchInput = $("#search-input"); // the text box
+var searchButton = $("#search-button"); // the search button
+var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
+var movieSuggestions = ["Avatar: The Way of Water", "Black Panther: Wakanda Forever", "Minions: The Rise of Gru", "Sonic The HedgeHog 2"];
+
+displaySearch()
+// functions
+
+function displaySearch() {
+    // search through the movie list to display each icon
+
+    for (var i = 0; i < movieSuggestions.length; i++) {
+        var movie = movieSuggestions[i]
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
+
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            // Creating a div to hold the movie
+            var movieDiv = $("<div class='movie'>");
+            // Retrieving the URL for the image
+            var imgURL = response.Poster;
+            // Creating an element to hold the image
+            var image = $("<img>").attr("src", imgURL);
+            // Appending the image
+            movieDiv.append(image);
+            // append to screen
+            movieStatics.append(movieDiv)
+        })
+    }
+}
+
+
+
+
+// click events
