@@ -63,6 +63,7 @@ function displaySearch() {
 }
 
 function getMovieInfo(){
+    $("#movie-info").empty()
     // get the movie typed in the search bar
     var movie = $("#search-input").val();
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
@@ -131,4 +132,5 @@ $("#search-button").on("click", function(event){
     }
 
     getMovieInfo()
+    searchInput.val("")
 })
