@@ -19,7 +19,7 @@ header{
 }
 .logo{
     height: 100px;
-    margin-left: 30%;
+    margin-left: 350px;
     margin-right: auto;
 }
 
@@ -52,10 +52,4 @@ header{
 }
 
 
-/* #cineImage{
-    padding: 0;
-}
-#cineImage img{
-    max-height: 200px;
-    width: 100%;
-} */
+/* clickable poster section */
