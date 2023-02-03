@@ -33,7 +33,7 @@ var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
 var movieSuggestions = ["Avatar: The Way of Water", "Black Panther: Wakanda Forever", "Minions: The Rise of Gru", "Sonic The HedgeHog 2",
     "Bros", "You People", "Jung_E", "The Last Manhunt", "The Invitation", "Everything Everywhere all at Once", "smile", "Bullet Train",
-    "The Lost City", "Lightyear", "Uncharted", "Morbius", "Turning Red", "Doctor Strange and the Multiverse of Madness", "Black Adam",
+    "The Lost City", "Lightyear", "Uncharted", "Morbius", "Turning Red", "Doctor Strange in the Multiverse of Madness", "Black Adam",
     "Thor: Love and Thunder", "The Bad Guys", "Strange World", "Jurassic World Dominion", "Luck", "The Sea Beast", "Slumberland", "Chip 'n Dale: Rescue Rangers"];
 
 // var moviesRandom = movieSuggestions[Math.floor(Math.random()*movieSuggestions.length)]
@@ -60,7 +60,7 @@ function shuffle(array) {
 function displaySearch() {
     shuffle(movieSuggestions)
     // search through the movie list to display each icon
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 8; i++) {
         var movie = movieSuggestions[i];
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
 
@@ -69,7 +69,7 @@ function displaySearch() {
             method: "GET",
         }).then(function (response) {
             // Creating a div to hold the movie
-            var movieDiv = $("<div class='movie'>");
+            var movieDiv = $("<div class='moviePull col-md-3'>");
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
@@ -154,3 +154,4 @@ $("#search-button").on("click", function (event) {
     getMovieInfo()
     searchInput.val("")
 })
+

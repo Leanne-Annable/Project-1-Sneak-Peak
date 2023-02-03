@@ -54,7 +54,7 @@ header{
 
 /* clickable poster section */
 
-.movie img{
-    max-height: 300px;
+.moviePull img{
+    max-height: 350px;
     
 }
