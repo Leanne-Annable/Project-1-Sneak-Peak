@@ -3,6 +3,33 @@
     Will probably need to use moment.js to set a time scale? 
     Or we could find another type of movies to link to the page - Maybe "classics" instead of recent releases
     if the code becomes too challenging within our timescale
+    if the code becomes too challenging within our timescale/*/
+
+//youtube api key//
+let movie="kill bill volume 1";
+let APIkey = "AIzaSyBIW8mXoGKUPXkb0--LKM1NAqFcEi1wDH8";
+movieSearch(movie)
+function find(c){
+    for (var i=0; i<movie.length; i++){
+        if(c.toUpperCase()===movie[i]){
+            return -1;
+        }
+    }
+    return 1;
+}
+function movieSearch(movie){
+    var queryURL= "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movie + " trailer&type=video&key=" + APIkey;
+    $.ajax({
+        url:queryURL,
+        method:"GET",
+    }).then(function(response){
+        console.log(queryURL);
+        console.log(response);
+        var trailerThumbnail= response.items[0].snippet.thumbnails.high.url;
+      var trailerVideo= response.items[0].id.videoId;
+       console.log(trailerThumbnail,trailerVideo);
+    });
+}
 
 
 /* create an API to call information from OMDB containing 
