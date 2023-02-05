@@ -71,10 +71,12 @@ function displaySearch() {
         }).then(function (response) {
             // Creating a div to hold the movie
             var movieDiv = $("<div class='moviePull col-md-3'>");
+            // create a title name for the item
+            var posterTitle = response.Title;
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
-            var image = $("<img id='posterImage'>").attr("src", imgURL);
+            var image = $("<img class='posterImage'>").attr({id: posterTitle, src: imgURL});
             // Appending the image
             movieDiv.append(image);
             // append to screen
