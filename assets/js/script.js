@@ -22,16 +22,22 @@ function movieSearch() {
     url: queryURL,
     method: "GET",
   }).then(function (response) {
-    console.log(queryURL);
-    console.log(response);
+   
     var movieDiv= $("<a id = 'trailer'>")
-    console.log(movieDiv);
-    // var trailerThumbnail = response.items[0].snippet.thumbnails.high.url;
+    
     var trailerVideo = response.items[0].id.videoId;
     movieDiv.append(trailerVideo);
-    // console.log(trailerThumbnail, trailerVideo);
-    document.getElementById
-    console.log("www.youtube.com/watch?v=" + trailerVideo);
+   
+   
+    
+    var pFour = $("<a id = 'trailer'>").text("Movie trailer" + movieTrailer);
+  
+    movieDiv.append(pFour);
+    
+    var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
+    console.log(movieTrailer);
+    const trail = document.getElementById("movieTrailer");
+    trail.innerHTML = ('Movie Trailer: ' + movieTrailer);
   });
 }
 
