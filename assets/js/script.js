@@ -14,33 +14,6 @@ let searchInput = $("#search-input");
 let APIkey = "AIzaSyBIW8mXoGKUPXkb0--LKM1NAqFcEi1wDH8";
 // movieSearch(movieCheck);
 
-function movieSearch() {
-  
-  var queryURL =
-    "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" +  searchInput.val() + "trailer&type=video&key=" + APIkey;
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-   
-    var movieDiv= $("<a id = 'trailer'>")
-    
-    var trailerVideo = response.items[0].id.videoId;
-    movieDiv.append(trailerVideo);
-   
-   
-    
-    var pFour = $("<a id = 'trailer'>").text("Movie trailer" + movieTrailer);
-  
-    movieDiv.append(pFour);
-    
-    var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
-    console.log(movieTrailer);
-    const trail = document.getElementById("movieTrailer");
-    trail.innerHTML = ('Movie Trailer: ' + movieTrailer);
-  });
-}
-
 /* create an API to call information from OMDB containing 
     -   The Movie Title
     -   Age Rating
@@ -67,21 +40,25 @@ var movieSuggestions = ["Avatar: The Way of Water", "Black Panther: Wakanda Fore
 // var moviesRandom = movieSuggestions[Math.floor(Math.random()*movieSuggestions.length)]
 // list of movies to show on screen - will need to add moreto the list and add a random feature to select different ones each time for variety
 var movieInput = ""
+
+
 displaySearch()
+
+
 // functions
 // Fisher-Yates (aka Knuth) Shuffle method
 function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     return array;
-  }
+}
 function displaySearch() {
     shuffle(movieSuggestions)
     // search through the movie list to display each icon
@@ -97,7 +74,7 @@ function displaySearch() {
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
-            var image = $("<img>").attr("src", imgURL);
+            var image = $("<img id='posterImage'>").attr("src", imgURL);
             // Appending the image
             movieDiv.append(image);
             // append to screen
@@ -140,11 +117,37 @@ function getMovieInfo() {
         // Creating an element to hold the image
         var image = $("<img>").attr("src", imgURL);
         // Appending the image
-        movieDiv.append(image);
+        $("#movie-poster").append(image);
         // Putting the entire movie above the previous movies
         $("#movie-info").append(movieDiv);
     });
 }
+function movieSearch() {
+
+    var queryURL =
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchInput.val() + "trailer&type=video&key=" + APIkey;
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+
+        var movieDiv = $("<a id = 'trailer'>")
+
+        var trailerVideo = response.items[0].id.videoId;
+        movieDiv.append(trailerVideo);
+
+        var pFour = $("<a id = 'trailer'>").text("Movie trailer" + movieTrailer);
+
+        movieDiv.append(pFour);
+
+        var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
+        console.log(movieTrailer);
+        const trail = document.getElementById("movieTrailer");
+        trail.innerHTML = ('Movie Trailer: ' + movieTrailer);
+    });
+}
+
+
 // click events
 // search button click event
 $("#search-button").on("click", function (event) {
@@ -153,10 +156,15 @@ $("#search-button").on("click", function (event) {
     if (movieInput === "" || movieInput === " ") {
         alert("Please enter a movie to search for")
         return
-        
+
     }
-    movieSearch();
+
     getMovieInfo();
+    movieSearch();
     searchInput.val("");
 })
 
+$("#posterImage").on("click", function (event){
+    event.preventDefault();
+    // need to create function to call the information the same way as the search button, but from clicking the poster value instead.
+})

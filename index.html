@@ -17,7 +17,7 @@
     <!-- main heading -->
     <!-- Image and text -->
     <header class="navbar navbar-light bg-grey">
-            <img class="logo" src="./assets/images/logo.png/logo-no-background.png" height="75">
+        <img class="logo" src="./assets/images/logo.png/logo-no-background.png" height="75">
     </header>
 
     <div class="container-fluid">
@@ -38,14 +38,14 @@
                                 <button type="submit" class="btn search-button text-white col-md-12" id="search-button"
                                     aria-label="submit search">
                                     Search
-                                </button> 
-                                                         
+                                </button>
+
                             </div>
-                            
-                        </div>  
-                                            
-                    </div> 
-                    <div id="movieTrailer"></div>                      
+
+                        </div>
+
+                    </div>
+
                 </form>
             </aside>
             <div id="infoText" class="col-md-9">
@@ -53,13 +53,19 @@
                     A little sneak peak!
                 </h3>
                 <p>Search for your favourite movies,<br>
-                or click on one of the latest releases to get all the information you could need<br>
-                plus a teaser trailer for the show itself!
+                    or click on one of the latest releases to get all the information you could need<br>
+                    plus a teaser trailer for the show itself!
                 </p>
             </div>
         </div>
     </div>
-    <div id="movie-info"></div>
+    <div class="row" id="infoSection">
+        <div id="movie-poster" class="col-md-3"></div>
+        <div id="movie-info" class="col-md-9">
+            <!-- This is where the movie information will appear when clicked or searched -->
+        </div>
+    </div>
+    <div id="movieTrailer"></div>
     <div class="container-fluid">
         <div class="suggestion-section">
             <div id="movie-statics" class="row"></div>
