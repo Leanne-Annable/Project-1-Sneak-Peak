@@ -71,10 +71,10 @@ var movieSuggestions = [
     "Matilda",
     "Bridesmaids"
 ];
-var movieInput = ""
+var movieInput = "";
+var targetID = "";
 
-
-displaySearch()
+initialDisplay()
 
 
 // functions
@@ -91,7 +91,7 @@ function shuffle(array) {
     }
     return array;
 }
-function displaySearch() {
+function initialDisplay() {
     shuffle(movieSuggestions)
     // search through the movie list to display each icon
     for (var i = 0; i < 8; i++) {
@@ -202,8 +202,14 @@ $("#search-button").on("click", function (event) {
     searchInput.val("");
 })
 
-$("#posterImage").on("click", function (event){
-    event.preventDefault();
-    // need to create function to call the information the same way as the search button, but from clicking the poster value instead.
-    // searchInput.val() = 
+
+var posterElements = document.getElementsByClassName("posterImage");
+// console.log(posterElements)
+document.addEventListener("click", function(event){
+    targetID = event.target.id;
+    // console.log(targetID);
+    searchInput.val(targetID);
+    getMovieInfo();
+    searchInput.val("");
 })
+

@@ -88,13 +88,13 @@ header{
     padding: 0;
 }
 
-.moviePull img{
+.posterImage{
     max-height: 400px; 
     max-width: 100%;
     border-radius: 15px;
     border: 5px solid sienna;
 }
 
-.moviePull img:hover{
+.posterImage:hover{
     opacity: .6;
 }
