@@ -198,7 +198,7 @@ $("#search-button").on("click", function (event) {
     }
 
     getMovieInfo();
-    movieSearch();
+    // movieSearch();
     searchInput.val("");
 })
 
