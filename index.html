@@ -22,9 +22,10 @@
 
     <div class="container-fluid">
         <div class="row">
+            <!-- aside section -->
             <aside id="search-section" class="col-md-3 pb-3">
                 <!-- sub-heading -->
-                <h2 id="form-heading" class="mt-1 h3 form-label">
+                <h2 id="form-heading" class="mt-1 form-label">
                     Movie search:
                 </h2>
                 <form id="search-form" class="form">
@@ -48,10 +49,11 @@
 
                 </form>
             </aside>
+            <!-- Page info -->
             <div id="infoText" class="col-md-9">
-                <h3 id="infoHeading" class="mt-1 h3 form-label">
+                <h2 id="infoHeading" class="mt-1 form-label">
                     A little sneak peak!
-                </h3>
+                </h2>
                 <p>Search for your favourite movies,<br>
                     or click on one of the latest releases to get all the information you could need<br>
                     plus a teaser trailer for the show itself!
@@ -59,18 +61,21 @@
             </div>
         </div>
     </div>
+    <!-- searched info -->
     <div class="row" id="infoSection">
+        <!-- image -->
         <div id="movie-poster" class="col-md-3"></div>
-        <div id="movie-info" class="col-md-9">
-            <!-- This is where the movie information will appear when clicked or searched -->
-        </div>
+        <!-- spacer column -->
+        <div class="col-md-1"></div>
+        <!-- text and link -->
+        <div id="movie-info" class="col-md-7"></div>
     </div>
-    <div id="movieTrailer"></div>
     <div class="container-fluid">
+        <!-- initial poster selection display area -->
         <div class="suggestion-section">
             <div id="movie-statics" class="row"></div>
             <p style="text-align: center;">
-                Thank you for using our page 🤗
+                🤗 Thank you for using our page 🤗
             </p>
         </div>
     </div>
@@ -80,6 +85,7 @@
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- js file -->
+    <script src="./assets/js/keys.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 

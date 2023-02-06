@@ -6,9 +6,7 @@ body{
     margin: 0;
 }
 
-
-
-/* nav bar */
+/* heading */
 header{
     background: url(../images/projector.jpg);
     width: 100%;
@@ -23,13 +21,12 @@ header{
     margin-right: auto;
 }
 
-
-
 /* search section - aside */
 #search-section{
     max-height: 200px;
 }
 #form-heading{
+    color: sienna;
     text-align: center;
 }
 #search-form{
@@ -42,19 +39,56 @@ header{
     padding: 0;
 }
 #search-button:hover{
-    opacity: .70
+    opacity: .7;
 }
 
 
-/* info section */
+/* page info section */
 #infoText{
     text-align: center;
+    color: rgb(209, 117, 75);
+    font-weight: 600;
 }
 
+/* searched movie section */
+#movie-poster {
+    display: flex;
+    justify-content: center;
+}
+#movie-poster img{
+    max-width: 100%;
+}
+
+#movie-info{
+    display: flex;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+    align-items: center;
+    font-size: larger;
+}
+.entered-info{
+    background-color: #2b2f38;
+    border-radius: 15px;
+    border: 5px solid sienna;
+}
 
 /* clickable poster section */
+.moviePull{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0;
+}
 
 .moviePull img{
-    max-height: 350px;
-    
+    max-height: 400px; 
+    max-width: 100%;
+    border-radius: 15px;
+    border: 5px solid sienna;
+}
+
+.moviePull img:hover{
+    opacity: .6;
 }

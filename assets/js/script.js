@@ -73,8 +73,6 @@ var movieSuggestions = [
 ];
 var movieInput = ""
 
-// API keys
-var youtubeApi= "AIzaSyBIW8mXoGKUPXkb0--LKM1NAqFcEi1wDH8";
 
 displaySearch()
 
@@ -98,7 +96,7 @@ function displaySearch() {
     // search through the movie list to display each icon
     for (var i = 0; i < 8; i++) {
         var movie = movieSuggestions[i];
-        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbApi;
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -129,6 +127,9 @@ function getMovieInfo() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        if (response === "false"){
+            return
+        } else {
         // Creating a div to hold the movie
         var movieDiv = $("<div class='movie'>");
         // getting each of the required information sections from OMDB
@@ -155,7 +156,8 @@ function getMovieInfo() {
         // Appending the image
         $("#movie-poster").append(image);
         // Putting the entire movie above the previous movies
-        $("#movie-info").append(movieDiv);
+        $("#movie-info").append(movieDiv).addClass("entered-info");
+        }
     });
 }
 function movieSearch() {
@@ -168,14 +170,14 @@ function movieSearch() {
     }).then(function (response) {
 
         var movieDiv = $("<a id = 'trailer'>")
-
+        // still showing the same trailer ID that it did when we spoke to Noah
         var trailerVideo = response.items[0].id.videoId;
         movieDiv.append(trailerVideo);
 
         var trailer = $("<a id = 'trailer'>").text("Movie trailer" + movieTrailer);
 
         movieDiv.append(trailer);
-
+        //  needs the source URL setting otherwise it is just appearing as text
         var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
         console.log(movieTrailer);
         var trail = document.getElementById("movieTrailer");
