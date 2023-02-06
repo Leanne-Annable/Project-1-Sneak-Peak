@@ -205,11 +205,16 @@ $("#search-button").on("click", function (event) {
 
 var posterElements = document.getElementsByClassName("posterImage");
 // console.log(posterElements)
-document.addEventListener("click", function(event){
+$("#movie-statics").on("click", function(event){
     targetID = event.target.id;
-    // console.log(targetID);
+    if (targetID === ""){
+        return    
+    } else {
+        console.log(targetID);
     searchInput.val(targetID);
     getMovieInfo();
     searchInput.val("");
+    }
+    
 })
 
