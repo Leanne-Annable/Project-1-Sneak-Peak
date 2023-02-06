@@ -203,18 +203,16 @@ $("#search-button").on("click", function (event) {
 })
 
 
-var posterElements = document.getElementsByClassName("posterImage");
-// console.log(posterElements)
 $("#movie-statics").on("click", function(event){
     targetID = event.target.id;
     if (targetID === ""){
         return    
     } else {
-        console.log(targetID);
+    // console.log(targetID);
     searchInput.val(targetID);
     getMovieInfo();
     searchInput.val("");
     }
-    
+    location.href = "#movie-poster"
 })
 

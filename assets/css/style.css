@@ -5,6 +5,9 @@ body{
     padding: 0;
     margin: 0;
 }
+html {  
+    scroll-behavior: smooth;  
+}
 
 /* heading */
 header{
@@ -26,7 +29,7 @@ header{
     max-height: 200px;
 }
 #form-heading{
-    color: sienna;
+    color: rgb(209, 117, 75);
     text-align: center;
 }
 #search-form{
@@ -38,13 +41,23 @@ header{
     margin-top: 10px;
     padding: 0;
 }
+#recent-search{
+    background:  rgb(126, 56, 24);
+    border-color: rgb(126, 56, 24);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0;
+}
 #search-button:hover{
     opacity: .7;
+}.input-group-append{
+    display: block;
 }
 
 
 /* page info section */
 #infoText{
+    margin-top: 15px;
     text-align: center;
     color: rgb(209, 117, 75);
     font-weight: 600;
@@ -61,6 +74,8 @@ header{
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 15px;
+    border: 5px solid sienna;    
 }
 
 #movie-info{
@@ -97,4 +112,8 @@ header{
 
 .posterImage:hover{
     opacity: .6;
+}
+
+#footer{
+    color: rgb(209, 117, 75);
 }
