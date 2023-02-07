@@ -24,32 +24,32 @@ var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
 // list of movies to show on screen - will need to add more to the list and add a random feature to select different ones each time for variety
 var movieSuggestions = [
-    "Avatar: The Way of Water", 
-    "Black Panther: Wakanda Forever", 
-    "Minions: The Rise of Gru", 
+    "Avatar: The Way of Water",
+    "Black Panther: Wakanda Forever",
+    "Minions: The Rise of Gru",
     "Sonic The HedgeHog 2",
-    "Bros", 
-    "You People", 
-    "Jung_E", 
-    "The Last Manhunt", 
-    "The Invitation", 
-    "Everything Everywhere all at Once", 
-    "smile", 
+    "Bros",
+    "You People",
+    "Jung_E",
+    "The Last Manhunt",
+    "The Invitation",
+    "Everything Everywhere all at Once",
+    "smile",
     "Bullet Train",
-    "The Lost City", 
-    "Lightyear", 
-    "Uncharted", 
-    "Morbius", 
-    "Turning Red", 
-    "Doctor Strange in the Multiverse of Madness", 
+    "The Lost City",
+    "Lightyear",
+    "Uncharted",
+    "Morbius",
+    "Turning Red",
+    "Doctor Strange in the Multiverse of Madness",
     "Black Adam",
-    "Thor: Love and Thunder", 
-    "The Bad Guys", 
-    "Strange World", 
-    "Jurassic World Dominion", 
-    "Luck", 
-    "The Sea Beast", 
-    "Slumberland", 
+    "Thor: Love and Thunder",
+    "The Bad Guys",
+    "Strange World",
+    "Jurassic World Dominion",
+    "Luck",
+    "The Sea Beast",
+    "Slumberland",
     "Chip 'n Dale: Rescue Rangers",
     "Kung Fury",
     "Street Fighter",
@@ -111,7 +111,7 @@ function initialDisplay() {
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
-            var image = $("<img class='posterImage'>").attr({id: posterTitle, src: imgURL});
+            var image = $("<img class='posterImage'>").attr({ id: posterTitle, src: imgURL });
             // Appending the image
             movieDiv.append(image);
             // append to screen
@@ -120,17 +120,17 @@ function initialDisplay() {
     }
     // call the list from local storage
     var previousSaves = JSON.parse(localStorage.getItem("SavedItems"))
-    if (previousSaves !== null){
+    if (previousSaves !== null) {
         savedItems = previousSaves
     }
     renderSaves()
 }
 // calling the saved items from local storage
-function renderSaves(){
+function renderSaves() {
     // delete the buttons prior to adding new favourites to stop repeated buttons
     $("#savedButtons").empty();
     // loop through the array of movies
-    for (var i = 0; i < savedItems.length; i++){
+    for (var i = 0; i < savedItems.length; i++) {
         // generate a button for each entry
         var a = $("<button>");
         // Adding a class of city to our button
@@ -149,50 +149,55 @@ function getMovieInfo() {
     $("#movie-info").empty();
     // get the movie typed in the search bar
     var movie = $("#search-input").val();
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=" + omdbApi;
     // ajax call on the searched info
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        if (response === "false"){
+        if (response === "false") {
             return
         } else {
-        // Creating a div to hold the movie
-        var movieDiv = $("<div class='movie'>");
-        // getting each of the required information sections from OMDB
-        var title = response.Title;
-        var pOne = $("<p>").text("Title: " + title);
-        var plot = response.Plot;
-        var pFour = $("<p>").text("Plot: " + plot);
-        var age = response.Rated;
-        var pTwo = $("<p>").text("Age Rating: " + age);
-        var runtime = response.Runtime;
-        var pThree = $("<p>").text("Run time: " + runtime); 
-        var actors = response.Actors;
-        var pFive = $("<p>").text("Main Actors: " + actors);
-        var rating = response.imdbRating;
-        var pSix = $("<p>").text("IMDB Rating: " + rating + "/10");
-        var release = response.Released
-        var pSeven = $("<p>").text("Release Date: " + release)
-        var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
-        // append everything to the movie div
-        movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);        
-        // Retrieving the URL for the image
-        var imgURL = response.Poster;
-        // Creating an element to hold the image
-        var image = $("<img>").attr("src", imgURL);
-        // Appending the image
-        $("#movie-poster").append(image);
-        // Putting the entire movie above the previous movies
-        $("#movie-info").append(movieDiv).addClass("entered-info");
-        $("#faveButton").on("click", function(event){
-            event.preventDefault()
-            // console.log(title);
-            savedItems.push(title)
-            // console.log(savedItems)
-            localStorage.setItem("LocalSavedItems", JSON.stringify(savedItems))
-        })
+            // Creating a div to hold the movie
+            var movieDiv = $("<div class='movie'>");
+            // getting each of the required information sections from OMDB
+            var title = response.Title;
+            var pOne = $("<p>").text("Title: " + title);
+            var plot = response.Plot;
+            var pFour = $("<p>").text("Plot: " + plot);
+            var age = response.Rated;
+            var pTwo = $("<p>").text("Age Rating: " + age);
+            var runtime = response.Runtime;
+            var pThree = $("<p>").text("Run time: " + runtime);
+            var actors = response.Actors;
+            var pFive = $("<p>").text("Main Actors: " + actors);
+            var rating = response.imdbRating;
+            var pSix = $("<p>").text("IMDB Rating: " + rating + "/10");
+            var release = response.Released
+            var pSeven = $("<p>").text("Release Date: " + release)
+            var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
+            // append everything to the movie div
+            movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);
+            // Retrieving the URL for the image
+            var imgURL = response.Poster;
+            // Creating an element to hold the image
+            var image = $("<img>").attr("src", imgURL);
+            // Appending the image
+            $("#movie-poster").append(image);
+            // Putting the entire movie above the previous movies
+            $("#movie-info").append(movieDiv).addClass("entered-info");
+            $("#faveButton").on("click", function (event) {
+                event.preventDefault()
+                // console.log(title);
+                var checkArray = savedItems.includes(title);
+                if (checkArray === true) {
+                    return
+                } else {
+                    savedItems.push(title)
+                    console.log(savedItems)
+                    localStorage.setItem("LocalSavedItems", JSON.stringify(savedItems))
+                }
+            })
         }
     });
 }
@@ -238,16 +243,16 @@ $("#search-button").on("click", function (event) {
 })
 
 // click event on pre selected posters
-$("#movie-statics").on("click", function(event) {
+$("#movie-statics").on("click", function (event) {
     event.preventDefault()
     targetID = event.target.id;
-    if (targetID === ""){
-        return    
+    if (targetID === "") {
+        return
     } else {
-    // console.log(targetID);
-    searchInput.val(targetID);
-    getMovieInfo();
-    searchInput.val("");
+        // console.log(targetID);
+        searchInput.val(targetID);
+        getMovieInfo();
+        searchInput.val("");
     }
     // movieSearch()
     location.href = "#movie-poster"
