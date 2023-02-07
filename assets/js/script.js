@@ -22,7 +22,7 @@
 var searchInput = $("#search-input");
 var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
-// list of movies to show on screen - will need to add moreto the list and add a random feature to select different ones each time for variety
+// list of movies to show on screen - will need to add more to the list and add a random feature to select different ones each time for variety
 var movieSuggestions = [
     "Avatar: The Way of Water", 
     "Black Panther: Wakanda Forever", 
@@ -73,6 +73,14 @@ var movieSuggestions = [
 ];
 var movieInput = "";
 var targetID = "";
+var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
+// click event on save button
+$("#faveButton").on("click", function(event){
+    event.preventDefault()
+    // var faveID = event.target.title;
+    // console.log(faveID);
+    console.log("hello");
+})
 
 initialDisplay()
 
@@ -135,12 +143,12 @@ function getMovieInfo() {
         // getting each of the required information sections from OMDB
         var title = response.Title;
         var pOne = $("<p>").text("Title: " + title);
+        var plot = response.Plot;
+        var pFour = $("<p>").text("Plot: " + plot);
         var age = response.Rated;
         var pTwo = $("<p>").text("Age Rating: " + age);
         var runtime = response.Runtime;
-        var pThree = $("<p>").text("Run time: " + runtime);
-        var plot = response.Plot;
-        var pFour = $("<p>").text("Plot: " + plot);
+        var pThree = $("<p>").text("Run time: " + runtime); 
         var actors = response.Actors;
         var pFive = $("<p>").text("Main Actors: " + actors);
         var rating = response.imdbRating;
@@ -148,7 +156,7 @@ function getMovieInfo() {
         var release = response.Released
         var pSeven = $("<p>").text("Release Date: " + release)
         // append everything to the movie div
-        movieDiv.append(pOne, pTwo, pThree, pSeven, pFour, pFive, pSix);        
+        movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);        
         // Retrieving the URL for the image
         var imgURL = response.Poster;
         // Creating an element to hold the image
@@ -157,6 +165,12 @@ function getMovieInfo() {
         $("#movie-poster").append(image);
         // Putting the entire movie above the previous movies
         $("#movie-info").append(movieDiv).addClass("entered-info");
+        $("#faveButton").on("click", function(event){
+            event.preventDefault()
+            // var faveID = event.target.title;
+            // console.log(faveID);
+            console.log("hello");
+        })
         }
     });
 }
@@ -181,11 +195,10 @@ function movieSearch() {
         var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
         console.log(movieTrailer);
         var trail = document.getElementById("movieTrailer");
-        trail.innerHTML = ('Movie Trailer: ' + movieTrailer);
+        trail.innerHTML = ('Movie Trailer: ' + movieTrailer); // the code doesn't recognise inner HTML
         $("#movie-info").append(trail);
     });
 }
-
 
 // click events
 // search button click event
@@ -193,17 +206,17 @@ $("#search-button").on("click", function (event) {
     event.preventDefault();
     movieInput = searchInput.val();
     if (movieInput === "" || movieInput === " ") {
-        alert("Please enter a movie to search for")
         return
     }
 
     getMovieInfo();
-    // movieSearch();
+    movieSearch();
     searchInput.val("");
 })
 
-
-$("#movie-statics").on("click", function(event){
+// click event on pre selected posters
+$("#movie-statics").on("click", function(event) {
+    event.preventDefault()
     targetID = event.target.id;
     if (targetID === ""){
         return    
@@ -213,6 +226,7 @@ $("#movie-statics").on("click", function(event){
     getMovieInfo();
     searchInput.val("");
     }
+    // movieSearch()
     location.href = "#movie-poster"
 })
 

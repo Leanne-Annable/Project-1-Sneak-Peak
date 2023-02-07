@@ -63,6 +63,16 @@ header{
     font-weight: 600;
 }
 
+#faveButton{
+    background: sienna;
+    border-color: sienna;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+}
+#faveButton:hover{
+    opacity: .7;
+}
 /* searched movie section */
 #movie-poster {
     display: flex;
