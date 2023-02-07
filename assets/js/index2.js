@@ -19,63 +19,44 @@
     in the call code we will need to add "movie trailer" so the youtube search looks for that specifically  
 */
 
+// variables
 
-//                                                                  ** variables **
-var searchInput = $("#search-input");
+var searchInput = $("#search-input"); // the text box
 var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
 var movieSuggestions = [
-    "Avatar: The Way of Water",
-    "Black Panther: Wakanda Forever",
-    "Minions: The Rise of Gru",
+    "Avatar: The Way of Water", 
+    "Black Panther: Wakanda Forever", 
+    "Minions: The Rise of Gru", 
     "Sonic The HedgeHog 2",
-    "Bros",
-    "You People",
-    "Jung_E",
-    "The Last Manhunt",
-    "The Invitation",
-    "Everything Everywhere all at Once",
-    "smile",
+    "Bros", 
+    "You People", 
+    "Jung_E", 
+    "The Last Manhunt", 
+    "The Invitation", 
+    "Everything Everywhere all at Once", 
+    "smile", 
     "Bullet Train",
-    "The Lost City",
-    "Lightyear",
-    "Uncharted",
-    "Morbius",
-    "Turning Red",
-    "Doctor Strange in the Multiverse of Madness",
+    "The Lost City", 
+    "Lightyear", 
+    "Uncharted", 
+    "Morbius", 
+    "Turning Red", 
+    "Doctor Strange in the Multiverse of Madness", 
     "Black Adam",
-    "Thor: Love and Thunder",
-    "The Bad Guys",
-    "Strange World",
-    "Jurassic World Dominion",
-    "Luck",
-    "The Sea Beast",
-    "Slumberland",
-    "Chip 'n Dale: Rescue Rangers",
-    "Kung Fury",
-    "Street Fighter",
-    "Rocky horror Picture Show",
-    "Sing 2",
-    "The Karate Kid",
-    "Police Academy",
-    "Life of Brian",
-    "The Mummy",
-    "Puss in Boots: The Last Wish",
-    "Magic Mike's Last Dance",
-    "Plane",
-    "The Fabelmans",
-    "The Whale",
-    "M3GAN",
-    "Titanic",
-    "Babylon",
-    "A Man Called Otto",
-    "Matilda",
-    "Bridesmaids"
-];
-var movieInput = "";
-var targetID = "";
-var savedItems = []; // will store faves here for local storage/pull
+    "Thor: Love and Thunder", 
+    "The Bad Guys", 
+    "Strange World", 
+    "Jurassic World Dominion", 
+    "Luck", 
+    "The Sea Beast", 
+    "Slumberland", 
+    "Chip 'n Dale: Rescue Rangers"];
 
+// list of movies to show on screen - will need to add moreto the list and add a random feature to select different ones each time for variety
+var movieInput = ""
+
+displayMovies()
 
 
 
@@ -123,12 +104,6 @@ function displayMovies() {
             movieStatics.append(movieDiv);
         })
     }
-    // call the list from local storage
-    var previousSaves = JSON.parse(localStorage.getItem("SavedItems"))
-    if (previousSaves !== null) {
-        savedItems = previousSaves
-    }
-    renderSaves()
 }
 
 // gets information about the movie the user requested
