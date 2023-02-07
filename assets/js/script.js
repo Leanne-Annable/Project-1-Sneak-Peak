@@ -119,11 +119,12 @@ function initialDisplay() {
         })
     }
     // call the list from local storage
-    var previousSaves = JSON.parse(localStorage.getItem("SavedItems"))
+    var previousSaves = JSON.parse(localStorage.getItem("LocalSavedItems"))
     if (previousSaves !== null) {
         savedItems = previousSaves
+        renderSaves()
     }
-    renderSaves()
+    
 }
 // calling the saved items from local storage
 function renderSaves() {
@@ -196,6 +197,7 @@ function getMovieInfo() {
                     savedItems.push(title)
                     console.log(savedItems)
                     localStorage.setItem("LocalSavedItems", JSON.stringify(savedItems))
+                    renderSaves()
                 }
             })
         }
