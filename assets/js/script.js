@@ -135,7 +135,7 @@ function renderSaves() {
         // generate a button for each entry
         var a = $("<button>");
         // Adding a class of city to our button
-        a.addClass("savedMovie");
+        a.addClass("savedMovie btn text-white col-md-12");
         // Adding a data-attribute
         a.attr("id", savedItems[i]);
         // Providing the initial button text
@@ -258,5 +258,12 @@ $("#movie-statics").on("click", function (event) {
     }
     // movieSearch()
     location.href = "#movie-poster"
+})
+
+$("#clearButton").on("click", function () {
+    // clears local storage
+    window.localStorage.clear();
+    // refreshes page
+    location.reload();
 })
 

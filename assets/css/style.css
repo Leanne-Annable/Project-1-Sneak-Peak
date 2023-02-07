@@ -49,6 +49,20 @@ header{
 }
 
 
+/* Saved section */
+#savedSearches{
+    display: flex;
+    align-content: center;
+}
+
+#clearButton{
+    background:  sienna;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 0;   
+}
+
+
 /* page info section */
 #infoText{
     margin-top: 15px;
