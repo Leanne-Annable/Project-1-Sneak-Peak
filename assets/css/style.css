@@ -41,13 +41,7 @@ header{
     margin-top: 10px;
     padding: 0;
 }
-#recent-search{
-    background:  rgb(126, 56, 24);
-    border-color: rgb(126, 56, 24);
-    border-radius: 5px;
-    margin-top: 10px;
-    padding: 0;
-}
+
 #search-button:hover{
     opacity: .7;
 }.input-group-append{
@@ -63,16 +57,13 @@ header{
     font-weight: 600;
 }
 
-#faveButton{
-    background: sienna;
-    border-color: sienna;
-    border-radius: 5px;
-    margin-top: 10px;
-    padding: 10px;
+#savedHeader{
+    text-align: center;
+    margin-top: 15px;
+    color: rgb(209, 117, 75);
 }
-#faveButton:hover{
-    opacity: .7;
-}
+
+
 /* searched movie section */
 #movie-poster {
     display: flex;
@@ -101,6 +92,19 @@ header{
     border-radius: 15px;
     border: 5px solid sienna;
 }
+
+#faveButton{
+    background: sienna;
+    border-color: sienna;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#faveButton:hover{
+    opacity: .7;
+}
+
 
 /* clickable poster section */
 .moviePull{

@@ -18,7 +18,7 @@
 */
 
 
-// variables
+//                                                                  ** variables **
 var searchInput = $("#search-input");
 var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
@@ -73,19 +73,13 @@ var movieSuggestions = [
 ];
 var movieInput = "";
 var targetID = "";
-var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
-// click event on save button
-$("#faveButton").on("click", function(event){
-    event.preventDefault()
-    // var faveID = event.target.title;
-    // console.log(faveID);
-    console.log("hello");
-})
+var savedItems = []; // will store faves here for local storage/pull
+
 
 initialDisplay()
 
 
-// functions
+//                                                                  ** functions **
 // Fisher-Yates (aka Knuth) Shuffle method
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -99,6 +93,7 @@ function shuffle(array) {
     }
     return array;
 }
+// Calling the initial movie suggestions
 function initialDisplay() {
     shuffle(movieSuggestions)
     // search through the movie list to display each icon
@@ -123,7 +118,32 @@ function initialDisplay() {
             movieStatics.append(movieDiv)
         })
     }
+    // call the list from local storage
+    var previousSaves = JSON.parse(localStorage.getItem("SavedItems"))
+    if (previousSaves !== null){
+        savedItems = previousSaves
+    }
+    renderSaves()
 }
+// calling the saved items from local storage
+function renderSaves(){
+    // delete the buttons prior to adding new favourites to stop repeated buttons
+    $("#savedButtons").empty();
+    // loop through the array of movies
+    for (var i = 0; i < savedItems.length; i++){
+        // generate a button for each entry
+        var a = $("<button>");
+        // Adding a class of city to our button
+        a.addClass("savedMovie");
+        // Adding a data-attribute
+        a.attr("id", savedItems[i]);
+        // Providing the initial button text
+        a.text(savedItems[i]);
+        // Adding the button to the city-list div
+        $("#savedButtons").append(a);
+    }
+}
+// getting the main movie information to show on screen
 function getMovieInfo() {
     $("#movie-poster").empty();
     $("#movie-info").empty();
@@ -155,6 +175,7 @@ function getMovieInfo() {
         var pSix = $("<p>").text("IMDB Rating: " + rating + "/10");
         var release = response.Released
         var pSeven = $("<p>").text("Release Date: " + release)
+        var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
         // append everything to the movie div
         movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);        
         // Retrieving the URL for the image
@@ -167,13 +188,15 @@ function getMovieInfo() {
         $("#movie-info").append(movieDiv).addClass("entered-info");
         $("#faveButton").on("click", function(event){
             event.preventDefault()
-            // var faveID = event.target.title;
-            // console.log(faveID);
-            console.log("hello");
+            // console.log(title);
+            savedItems.push(title)
+            // console.log(savedItems)
+            localStorage.setItem("LocalSavedItems", JSON.stringify(savedItems))
         })
         }
     });
 }
+// getting the youtube information
 function movieSearch() {
 
     var queryURL =
@@ -200,7 +223,7 @@ function movieSearch() {
     });
 }
 
-// click events
+//                                                                  ** click events **
 // search button click event
 $("#search-button").on("click", function (event) {
     event.preventDefault();
