@@ -22,8 +22,7 @@
 var searchInput = $("#search-input");
 var searchButton = $("#search-button"); // the search button
 var movieStatics = $("#movie-statics"); // the div section where the movie suggestions will be held
-// list of movies to show on screen - will need to add more to the list and add a random feature to select different ones each time for variety
-var movieSuggestions = [
+var movieSuggestions = [ // list of movies to show on screen - will need to add more to the list and add a random feature to select different ones each time for variety
     "Avatar: The Way of Water",
     "Black Panther: Wakanda Forever",
     "Minions: The Rise of Gru",
@@ -79,17 +78,18 @@ var savedItems = []; // will store faves here for local storage/pull
 initialDisplay()
 
 
-//                                                                  ** functions **
-// Fisher-Yates (aka Knuth) Shuffle method
+
+//                                                                  ** functions  **
+// Fisher-Yates (aka Knuth) Shuffle method to shuffle the pre-set movie list
 function shuffle(array) {
-    let currentIndex = array.length, randomIndex;
+    let currentIndex = array.length,  randomIndex;
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-        // Pick a remaining element.
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     return array;
 }
@@ -203,34 +203,24 @@ function getMovieInfo() {
         }
     });
 }
-// getting the youtube information
-function movieSearch() {
-
-    var queryURL =
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchInput + "trailer&type=video&key=" + youtubeApi;
+// // function to do the youtube movie search
+function youtubeSearch(){
+    var queryURL= "https://www.googleapis.com/youtube/v3/search?part=snippet&q= " + searchInput.val() + " trailer&type=video&key= " + youtubeApi;
     $.ajax({
-        url: queryURL,
-        method: "GET",
-    }).then(function (response) {
-
-        var movieDiv = $("<a id = 'trailer'>")
-        // still showing the same trailer ID that it did when we spoke to Noah
-        var trailerVideo = response.items[0].id.videoId;
-        movieDiv.append(trailerVideo);
-
-        var trailer = $("<a id = 'trailer'>").text("Movie trailer" + movieTrailer);
-
-        movieDiv.append(trailer);
-        //  needs the source URL setting otherwise it is just appearing as text
-        var movieTrailer = "www.youtube.com/watch?v=" + trailerVideo;
-        console.log(movieTrailer);
-        var trail = document.getElementById("movieTrailer");
-        trail.innerHTML = ('Movie Trailer: ' + movieTrailer); // the code doesn't recognise inner HTML
-        $("#movie-info").append(trail);
+        url:queryURL,
+        method:"GET",
+    }).then(function(response){
+        console.log(queryURL);
+        console.log(response);
+        var movieDiv= $("<a id = 'trailer'>")
+        console.log(movieDiv);
+      var trailerVideo= response.items[0].id.videoId;
+      movieDiv.append(trailerVideo);
+       console.log("www.youtube.com/watch?v=" + trailerVideo);
     });
 }
 
-//                                                                  ** click events **
+//                                                              **  click events  **
 // search button click event
 $("#search-button").on("click", function (event) {
     event.preventDefault();
@@ -240,7 +230,7 @@ $("#search-button").on("click", function (event) {
     }
 
     getMovieInfo();
-    movieSearch();
+    youtubeSearch();
     searchInput.val("");
 })
 
@@ -256,7 +246,7 @@ $("#movie-statics").on("click", function (event) {
         getMovieInfo();
         searchInput.val("");
     }
-    // movieSearch()
+    // youtubeSearch()
     location.href = "#movie-poster"
 })
 
