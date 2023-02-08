@@ -215,8 +215,9 @@ function youtubeSearch(){
         var movieDiv= $("<a id = 'trailer'>")
         console.log(movieDiv);
       var trailerVideo= response.items[0].id.videoId;
-      movieDiv.append(trailerVideo);
+      movieDiv.append("www.youtube.com/watch?v=" + trailerVideo); // added the youtube text
        console.log("www.youtube.com/watch?v=" + trailerVideo);
+       $("#movie-info").append(movieDiv); // appended to movie-info section - displays in the wrong place but works - just needs turning into a link
     });
 }
 
@@ -244,6 +245,7 @@ $("#movie-statics").on("click", function (event) {
         // console.log(targetID);
         searchInput.val(targetID);
         getMovieInfo();
+        youtubeSearch();
         searchInput.val("");
     }
     // youtubeSearch()
