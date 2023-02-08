@@ -82,14 +82,14 @@ initialDisplay()
 //                                                                  ** functions  **
 // Fisher-Yates (aka Knuth) Shuffle method to shuffle the pre-set movie list
 function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length, randomIndex;
     // While there remain elements to shuffle.
     while (currentIndex != 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     return array;
 }
@@ -124,7 +124,7 @@ function initialDisplay() {
         savedItems = previousSaves
         renderSaves()
     }
-    
+
 }
 // calling the saved items from local storage
 function renderSaves() {
@@ -210,8 +210,8 @@ function getMovieInfo() {
     });
 }
 // // function to do the youtube movie search
-function youtubeSearch(){
-    var queryURL= "https://www.googleapis.com/youtube/v3/search?part=snippet&q= " + searchInput.val() + " trailer&type=video&key= " + youtubeApi;
+function youtubeSearch() {
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q= " + searchInput.val() + " trailer&type=video&key= " + youtubeApi;
     $.ajax({
         url:queryURL,
         method:"GET",
@@ -250,7 +250,7 @@ $("#search-button").on("click", function (event) {
 
 // click event on pre selected posters
 $("#movie-statics").on("click", function (event) {
-    event.preventDefault()
+    event.preventDefault();
     targetID = event.target.id;
     if (targetID === "") {
         return
@@ -271,12 +271,13 @@ $("#clearButton").on("click", function () {
     // refreshes page
     location.reload();
 })
+
 $("#savedButtons").on("click", function (event) {
-  event.preventDefault();
-  targetID = event.target.id;
-  // console.log(targetID);
-  searchInput.val(targetID);
-  getMovieInfo();
-  youtubeSearch();
-  searchInput.val("");
+    event.preventDefault();
+    targetID = event.target.id;
+    // console.log(targetID);
+    searchInput.val(targetID);
+    getMovieInfo();
+    youtubeSearch();
+    searchInput.val("");
 })
