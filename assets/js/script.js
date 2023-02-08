@@ -179,6 +179,12 @@ function getMovieInfo() {
             var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
             // append everything to the movie div
             movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);
+            //trailer button
+            var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
+            var movieLink= $("<a id = 'trailer' target='_blank'>");
+            movieLink.append(ytLink);
+            movieDiv.append(movieLink);
+            
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
@@ -212,12 +218,19 @@ function youtubeSearch(){
     }).then(function(response){
         console.log(queryURL);
         console.log(response);
-        var movieDiv= $("<a id = 'trailer'>")
-        console.log(movieDiv);
-      var trailerVideo= response.items[0].id.videoId;
-      movieDiv.append("www.youtube.com/watch?v=" + trailerVideo); // added the youtube text
+        
+        var trailerVideo= response.items[0].id.videoId;
+        var ytHr= "https://www.youtube.com/watch?v=" + trailerVideo;
+        // var movieDiv= $("<a id = 'trailer' href = "+ ytHr +">");
+        
+      
+      // movieDiv.href="www.youtube.com/watch?v=" + trailerVideo; // added the youtube text
        console.log("www.youtube.com/watch?v=" + trailerVideo);
-       $("#movie-info").append(movieDiv); // appended to movie-info section - displays in the wrong place but works - just needs turning into a link
+       $("#trailer").attr("href", ytHr);
+      //  movieDiv.append($("#btnTrailer"))
+      //  var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
+      //  movieDiv.append( ytLink);
+        // appended to movie-info section - displays in the wrong place but works - just needs turning into a link
     });
 }
 
@@ -258,4 +271,12 @@ $("#clearButton").on("click", function () {
     // refreshes page
     location.reload();
 })
-
+$("#savedButtons").on("click", function (event) {
+  event.preventDefault();
+  targetID = event.target.id;
+  // console.log(targetID);
+  searchInput.val(targetID);
+  getMovieInfo();
+  youtubeSearch();
+  searchInput.val("");
+})

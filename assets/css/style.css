@@ -59,6 +59,7 @@ header{
     background:  sienna;
     border-radius: 5px;
     margin-top: 10px;
+    margin-bottom: 10px;
     padding: 0;   
 }
 
@@ -119,7 +120,17 @@ header{
     opacity: .7;
 }
 
-
+#btnTrailer{
+    background: sienna;
+    border-color: sienna;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+}
+#btnTrailer:hover{
+    opacity: .7;
+}
 /* clickable poster section */
 .moviePull{
     display: flex;
