@@ -7,6 +7,7 @@ This is an easy to use movie information page. You can search for specific movie
 
 
 ## Usage 
+** You will need your own API key for both OMDB and YouTube for this code to work correctly **
 
 To use this website:
 - Type in the text box, the movie you would like to get information for and click the search button.
