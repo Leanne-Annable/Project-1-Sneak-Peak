@@ -6,8 +6,9 @@ A way to check information about a specific movie and recent releases.
 This is an easy to use movie information page. You can search for specific movies, or click on the available suggestions to get information about the selected movie and a link to the youtube trailer.
 
 
-## Usage 
-** You will need your own API key for both OMDB and YouTube for this code to work correctly **
+## Usage
+
+<strong>** You will need your own API key for both OMDB and YouTube for this code to work correctly **</strong>
 
 To use this website:
 - Type in the text box, the movie you would like to get information for and click the search button.
