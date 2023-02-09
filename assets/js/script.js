@@ -211,7 +211,7 @@ function getMovieInfo() {
 }
 // // function to do the youtube movie search
 function youtubeSearch() {
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q= " + searchInput.val() + " trailer&type=video&key= " + youtubeApi;
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchInput.val() + "official+trailer&type=video&key=" + youtubeApi;
     $.ajax({
         url:queryURL,
         method:"GET",
