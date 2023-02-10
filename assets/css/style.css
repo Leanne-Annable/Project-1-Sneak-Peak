@@ -120,7 +120,13 @@ header{
     opacity: .7;
 }
 
-#btnTrailer{
+#trailer{
+    margin-left: 50px !important;
+    margin-right: 20px !important;
+}
+
+/* old button code */
+/* #btnTrailer{
     background: sienna;
     border-color: sienna;
     border-radius: 5px;
@@ -130,7 +136,7 @@ header{
 }
 #btnTrailer:hover{
     opacity: .7;
-}
+} */
 /* clickable poster section */
 .moviePull{
     display: flex;

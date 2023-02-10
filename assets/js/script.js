@@ -179,12 +179,15 @@ function getMovieInfo() {
             var addFave = $("<button class='btn text-white' id=faveButton>").text("Add to favourites");
             // append everything to the movie div
             movieDiv.append(pOne, pFour, pTwo, pThree, pSeven, pFive, pSix, addFave);
-            //trailer button
-            var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
-            var movieLink= $("<a id = 'trailer' target='_blank'>");
-            movieLink.append(ytLink);
-            movieDiv.append(movieLink);
-            
+
+            var ytLink = $("<iframe width='600' height='350' id=trailer>"); // movie trailer on screen
+
+            // trailer button  // old code for creating a youtube link button
+            // var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
+            // var movieLink= $("<a id = 'trailer' target='_blank'>"); 
+            // movieLink.append(ytLink);
+            // movieDiv.append(movieLink);
+
             // Retrieving the URL for the image
             var imgURL = response.Poster;
             // Creating an element to hold the image
@@ -206,6 +209,7 @@ function getMovieInfo() {
                     renderSaves()
                 }
             })
+            $("#movie-info").append(ytLink);
         }
     });
 }
@@ -213,23 +217,21 @@ function getMovieInfo() {
 function youtubeSearch() {
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchInput.val() + "official+trailer&type=video&key=" + youtubeApi;
     $.ajax({
-        url:queryURL,
-        method:"GET",
-    }).then(function(response){
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
         console.log(queryURL);
         console.log(response);
-        
-        var trailerVideo= response.items[0].id.videoId;
-        var ytHr= "https://www.youtube.com/watch?v=" + trailerVideo;
-        // var movieDiv= $("<a id = 'trailer' href = "+ ytHr +">");
-        
-      
-      // movieDiv.href="www.youtube.com/watch?v=" + trailerVideo; // added the youtube text
-       console.log("www.youtube.com/watch?v=" + trailerVideo);
-       $("#trailer").attr("href", ytHr);
-      //  movieDiv.append($("#btnTrailer"))
-      //  var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
-      //  movieDiv.append( ytLink);
+
+        var trailerVideo = response.items[0].id.videoId;
+        var ytHr = "https://www.youtube.com/embed/" + trailerVideo;
+
+        // var movieDiv= $("<a id = 'trailer' href = "+ ytHr +">"); // old button code
+        // console.log("www.youtube.com/watch?v=" + trailerVideo);
+        $("#trailer").attr("src", ytHr);
+        //  movieDiv.append($("#btnTrailer"))  // old button code
+        //  var ytLink = $("<button class='btn text-white' id=btnTrailer>").text("Watch Trailer");
+        //  movieDiv.append( ytLink);
         // appended to movie-info section - displays in the wrong place but works - just needs turning into a link
     });
 }
